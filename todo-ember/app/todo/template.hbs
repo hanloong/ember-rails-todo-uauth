@@ -7,6 +7,7 @@
   <button class='ui button' type="submit">Create</button>
 </form>
 
+<h4>Outstanding</h4>
 <table class="ui basic table">
   <thead>
     <tr>
@@ -16,16 +17,34 @@
   </thead>
   <tbody>
     {{#each model.todos as |todo|}}
-      <tr>
-        <td>{{todo.title}}</td>
-        <td>
-        {{#if todo.complete}}
-          Done
-        {{else}}
-          <button class='ui button' {{action 'complete' todo}}>Complete</button>
-        {{/if}}
-        </td>
-      </tr>
+      {{#unless todo.complete}}
+        <tr>
+          <td>{{todo.title}}</td>
+          <td>
+            <button class='ui button' {{action 'complete' todo}}>Complete</button>
+          </td>
+        </tr>
+      {{/unless}}
+    {{/each}}
+  </tbody>
+</table>
+
+<h4>Completed</h4>
+<table class="ui basic table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.todos as |todo|}}
+      {{#if todo.complete}}
+        <tr>
+          <td>{{todo.title}}</td>
+          <td> Done </td>
+        </tr>
+      {{/if}}
     {{/each}}
   </tbody>
 </table>

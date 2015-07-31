@@ -4,6 +4,8 @@ class Api::V1::TodoResource < JSONAPI::Resource
 
   before_create :set_user
 
+  filter :complete
+
   # prevent the api call from manually assigning user
   def self.updatable_fields(context)
     super - [:user]
@@ -16,9 +18,9 @@ class Api::V1::TodoResource < JSONAPI::Resource
   private
 
   def set_user
-    # grab the current_user from context hash
     current_user = context[:current_user]
     # assign user to the todo model
+    # grab the current_user from context hash
     @model.assign_attributes({user: current_user})
   end
 end

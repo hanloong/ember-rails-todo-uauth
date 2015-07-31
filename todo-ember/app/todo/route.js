@@ -3,11 +3,13 @@ import AuthenticatedRouteMixin from 'simple-auth/mixins/authenticated-route-mixi
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function() {
-    return {todos: this.store.findAll('todo'), newTodo: ''};
+    return {
+      todos: this.store.find('todo'),
+    };
   },
   actions: {
     create: function(newTodo) {
-      if(newTodo != '') {
+      if(newTodo !== '') {
         var todo = this.store.createRecord('todo', {title: newTodo});
         todo.save();
         this.set('model.newTodo', '');
