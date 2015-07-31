@@ -1,0 +1,12 @@
+<h2>Login</h2>
+<form {{action 'authenticate' on='submit'}} class='ui form'>
+  <div class='field'>
+    <label>Email</label>
+    {{input id='identification' placeholder='Enter Email Address' value=identification}}
+  </div>
+  <div class='field'>
+    <label>Password</label>
+    {{input id='password' placeholder='Enter Password' type='password' value=password}}
+  </div>
+  <button class='ui button' type="submit">Login</button>
+</form>

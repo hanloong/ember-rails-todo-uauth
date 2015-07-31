@@ -1,0 +1,20 @@
+<div class="ui inverted menu">
+  <div class="ui container">
+    <div href="#" class="header item">
+      Ember OAuth Todos
+    </div>
+    {{#if session.isAuthenticated}}
+      {{#link-to 'todo' class='item'}}Todo{{/link-to}}
+      <a href="#" class='item' {{ action 'invalidateSession' }}>Sign Out</a>
+    {{else}}
+      {{#link-to 'login' class='item'}}Login{{/link-to}}
+      {{#link-to 'register' class='item'}}Register{{/link-to}}
+    {{/if}}
+  </div>
+</div>
+
+<div class='ui two column centered grid'>
+  <div class='column'>
+    {{outlet}}
+  </div>
+</div>

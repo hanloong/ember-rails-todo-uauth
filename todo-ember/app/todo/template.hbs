@@ -1,0 +1,31 @@
+<h2>Todos</h2>
+<form {{action 'create' newTodo on='submit'}} class='ui form'>
+  <div class='field'>
+    <label>Title</label>
+    {{input placeholder='Whatcha go going on.' value=newTodo}}
+  </div>
+  <button class='ui button' type="submit">Create</button>
+</form>
+
+<table class="ui basic table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.todos as |todo|}}
+      <tr>
+        <td>{{todo.title}}</td>
+        <td>
+        {{#if todo.complete}}
+          Done
+        {{else}}
+          <button class='ui button' {{action 'complete' todo}}>Complete</button>
+        {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
